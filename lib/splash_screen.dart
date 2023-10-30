@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF5FBF2E),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -40,6 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
               'Retail Shop',
               style: TextStyle(
                 fontSize: 24,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

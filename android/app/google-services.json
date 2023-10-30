@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1088524873343",
+    "project_id": "com-example-ecommerce1-a79e8",
+    "storage_bucket": "com-example-ecommerce1-a79e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088524873343:android:13e5a7ab0418510918d94a",
+        "android_client_info": {
+          "package_name": "com.example.firebasedemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV-st-41kv562ggb1hZB1FXgzNZ5EuSFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088524873343:android:2415100ee9c0e9a218d94a",
+        "android_client_info": {
+          "package_name": "com.shop.retail"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV-st-41kv562ggb1hZB1FXgzNZ5EuSFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
