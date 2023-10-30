@@ -9,7 +9,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}); // Fix the constructor declaration here.
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {

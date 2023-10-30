@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import './login_screen.dart';
+import './home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -7,19 +9,34 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
-    // Simulate some loading or initialization process
-    // You can replace this with your own logic, like checking for user authentication, fetching data, etc.
-    Future.delayed(Duration(seconds: 3), () {
-      // Replace this with your navigation logic, for example, navigating to the login screen.
+    // Check if the user is signed in
+    _checkUserAuthentication();
+  }
+
+  Future<void> _checkUserAuthentication() async {
+    await Future.delayed(Duration(seconds: 3)); // Simulate loading process
+
+    final user = _auth.currentUser;
+    if (user != null) {
+      // User is authenticated, navigate to the home screen.
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ),
+      );
+    } else {
+      // User is not authenticated, navigate to the login screen.
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => LoginScreen(),
         ),
       );
-    });
+    }
   }
 
   @override

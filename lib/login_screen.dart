@@ -1,6 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+import './home_screen.dart';
+
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +69,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     labelStyle: TextStyle(
@@ -76,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 TextFormField(
+                  controller: passwordController,
                   decoration: InputDecoration(
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Color(0xFF222222)),
@@ -106,7 +120,9 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    loginWithEmailAndPassword(context);
+                  },
                   child: Text(
                     'LOGIN',
                     style: TextStyle(color: Colors.black),
@@ -118,7 +134,9 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Add code for navigating to the registration screen.
+                  },
                   child: Text(
                     'REGISTER NOW',
                     style: TextStyle(color: Colors.red),
@@ -138,7 +156,9 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Add code for signing in with Facebook.
+                  },
                   child: Text(
                     'Sign in with Facebook',
                     style: TextStyle(color: Colors.black),
@@ -150,7 +170,9 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Add code for signing in with Google.
+                  },
                   child: Text(
                     'Sign in with Google',
                     style: TextStyle(color: Colors.black),
@@ -166,5 +188,25 @@ class LoginScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> loginWithEmailAndPassword(BuildContext context) async {
+    try {
+      final UserCredential userCredential =
+          await _auth.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      // If login is successful, update the UI and navigate to the next screen.
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    } catch (e) {
+      // Handle login failure and display an error message.
+      print("Login error: $e");
+      // You can display an error message here.
+    }
   }
 }
